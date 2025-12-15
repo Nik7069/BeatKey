@@ -1,0 +1,9 @@
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/BeatKey.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/edit_cache.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/rebuild_cache.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/list_install_components.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/install.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/install/local.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/install/strip.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/BeatKey_autogen_timestamp_deps.dir
+D:/GitHub/BeatKey/BeatKey/release/CMakeFiles/BeatKey_autogen.dir

@@ -1,0 +1,18 @@
+# ninja log v6
+3	542	7873717729851690	BeatKey_autogen/timestamp	f4c1cca0b6e01e46
+3	542	7873717729851690	BeatKey_autogen/mocs_compilation.cpp	f4c1cca0b6e01e46
+3	542	7873717729851690	D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/timestamp	f4c1cca0b6e01e46
+3	542	7873717729851690	D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/mocs_compilation.cpp	f4c1cca0b6e01e46
+555	2373	7873717730601859	CMakeFiles/BeatKey.dir/gameconfig.cpp.obj	9060981cae5d3468
+549	2686	7873717730531846	CMakeFiles/BeatKey.dir/main.cpp.obj	e7d2a93f03320e40
+546	2889	7873717730511842	CMakeFiles/BeatKey.dir/BeatKey_autogen/mocs_compilation.cpp.obj	c6129f6f27bfaedd
+553	3006	7873717730581863	CMakeFiles/BeatKey.dir/settingsdialog.cpp.obj	2c8ddfd35042e213
+551	3684	7873717730561854	CMakeFiles/BeatKey.dir/mainwindow.cpp.obj	861ee6bf50bebd8
+3684	3825	7873717761891548	BeatKey.exe	a7e0bcbe094761f
+6	128	7873722613270174	BeatKey_autogen/timestamp	f4c1cca0b6e01e46
+6	128	7873722613270174	BeatKey_autogen/mocs_compilation.cpp	f4c1cca0b6e01e46
+6	128	7873722613270174	D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/timestamp	f4c1cca0b6e01e46
+6	128	7873722613270174	D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/mocs_compilation.cpp	f4c1cca0b6e01e46
+132	2196	7873722614520455	CMakeFiles/BeatKey.dir/settingsdialog.cpp.obj	2c8ddfd35042e213
+129	2887	7873722614500452	CMakeFiles/BeatKey.dir/mainwindow.cpp.obj	861ee6bf50bebd8
+2887	3029	7873722642076140	BeatKey.exe	a7e0bcbe094761f
