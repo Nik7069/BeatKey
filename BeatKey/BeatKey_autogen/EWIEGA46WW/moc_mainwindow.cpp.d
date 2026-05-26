@@ -1,17 +1,25 @@
 D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp: D:/GitHub/BeatKey/BeatKey/mainwindow.h \
   D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/moc_predefs.h \
   D:/GitHub/BeatKey/BeatKey/gameconfig.h \
+  D:/GitHub/BeatKey/BeatKey/leaderboardclient.h \
   D:/GitHub/BeatKey/BeatKey/settingsdialog.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QCoreApplication \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QDateTime \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QElapsedTimer \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QFlags \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QList \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QMetaType \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QObject \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QPropertyAnimation \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QRect \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QSettings \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QSharedDataPointer \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QSize \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QSizeF \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QString \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QTimer \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QUrl \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/QVariant \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q17memory.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q20functional.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q20iterator.h \
@@ -20,6 +28,7 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q20utility.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q23type_traits.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q23utility.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/q26numeric.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qabstractanimation.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qabstracteventdispatcher.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qalgorithms.h \
@@ -38,6 +47,7 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qbytearraylist.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qbytearrayview.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcalendar.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qchar.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcheckedint_impl.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcompare.h \
@@ -53,8 +63,10 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcoreapplication.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcoreevent.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qcryptographichash.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qdatastream.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qdatetime.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qdeadlinetimer.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qdebug.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qeasingcurve.h \
@@ -86,6 +98,7 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qmargins.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qmath.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qmetacontainer.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qmetaobject.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qmetatype.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qminmax.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtCore/qnamespace.h \
@@ -179,6 +192,7 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qkeysequence.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qpaintdevice.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qpalette.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qpicture.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qpixelformat.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qpixmap.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qpointingdevice.h \
@@ -188,6 +202,7 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qrgba64.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qscreen.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qscreen_platform.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qtextdocument.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qtgui-config.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qtguiexports.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtGui/qtguiglobal.h \
@@ -207,12 +222,33 @@ D:/GitHub/BeatKey/BeatKey/release/BeatKey_autogen/EWIEGA46WW/moc_mainwindow.cpp:
   D:/Programs/Qt/6.10.1/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/QNetworkAccessManager \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/QSslConfiguration \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qabstractsocket.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qhostaddress.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qhttpheaders.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qnetworkaccessmanager.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qnetworkrequest.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qssl.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qsslcertificate.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qsslconfiguration.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qsslerror.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qsslsocket.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qtcpsocket.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qtnetwork-config.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qtnetworkexports.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/QDialog \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/QKeySequenceEdit \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/QMainWindow \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qabstractbutton.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qdialog.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qframe.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qkeysequenceedit.h \
+  D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qmainwindow.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qsizepolicy.h \
   D:/Programs/Qt/6.10.1/mingw_64/include/QtWidgets/qtabwidget.h \
