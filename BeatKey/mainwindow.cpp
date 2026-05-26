@@ -6,6 +6,14 @@
 #include <QDebug>
 #include <QPainter>
 #include <QPen>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QVBoxLayout>
+#include <QDialogButtonBox>
+#include <QDialog>
+#include <QLineEdit>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -13,6 +21,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    scoreStatusLabel = new QLabel(ui->centralwidget);
+    scoreStatusLabel->setGeometry(10, 56, 400, 30);
+    scoreStatusLabel->setFont(ui->statusGameLabel->font());
+    scoreStatusLabel->setStyleSheet("color: black; font-weight: bold;");
+    scoreStatusLabel->show();
+    updateScoreStatusLabel();
 
     // Загружаем настройки
     config.loadSettings();
@@ -36,6 +51,16 @@ MainWindow::MainWindow(QWidget *parent)
     // В дизайнере добавьте QAction в меню "Файл" с именем actionSettings
     connect(ui->actionSettings, &QAction::triggered,
             this, &MainWindow::showSettingsDialog);
+
+    ui->menubar->addAction("Лидеры", this, &MainWindow::showLeaderboard);
+
+    leaderboardClient = new LeaderboardClient(this);
+    connect(leaderboardClient, &LeaderboardClient::fetchFinished,
+            this, &MainWindow::showLeaderboardEntries);
+    connect(leaderboardClient, &LeaderboardClient::submitFinished,
+            this, &MainWindow::onLeaderboardSubmitFinished);
+    connect(leaderboardClient, &LeaderboardClient::requestFailed,
+            this, &MainWindow::onLeaderboardRequestFailed);
 
     gameLoopTimer = new QTimer(this);
     connect(gameLoopTimer, &QTimer::timeout, this, &MainWindow::updateGame);
@@ -173,10 +198,14 @@ void MainWindow::loadMap()
     }
 
     currentMap.musicPath = mp3Path;
+    currentMap.id = info.completeBaseName();
+    currentMap.title = info.completeBaseName();
     player->setSource(QUrl::fromLocalFile(mp3Path));
 
 
     ui->statusMapLabel->setText("Карта загружена: " + info.completeBaseName());
+    score = 0;
+    updateScoreStatusLabel();
 }
 
 
@@ -194,7 +223,11 @@ void MainWindow::startGame()
     }
 
     hp = 50;
+    score = 0;
+    scoreDialogShown = false;
     updateHpLabel();
+    updateScoreStatusLabel();
+    ui->scoreLabel->setText(QString("Score: %1").arg(score));
 
     gameState = GameState::Playing;
     ui->statusGameLabel->setText("Подготовка...");
@@ -247,10 +280,11 @@ void MainWindow::updateGame()
     if (allProcessed && musicTime > 0) {
         gameState = GameState::Idle;
         player->stop();
-        ui->statusGameLabel->setText("Игра окончена");
+        ui->statusGameLabel->setText(QString("Игра окончена. Очки: %1").arg(score));
         // ui->scoreLabel->setText("");
         // ui->hpLabel->setText("");
         update();
+        submitScore();
         return;
     }
 
@@ -324,16 +358,22 @@ void MainWindow::registerHit(qint64 diff)
         lastHitText = "ОТЛИЧНО";
         lastHitColor = QColor(0, 255, 0);
         hpDelta = +2;
+        score += 300;
+        updateScoreStatusLabel();
     }
     else if (diff <= 50) {
         lastHitText = "ХОРОШО";
         lastHitColor = QColor(0, 200, 255);
         hpDelta = +1;
+        score += 200;
+        updateScoreStatusLabel();
     }
     else if (diff <= missAfterTime) {
         lastHitText = "СОЙДЕТ";
         lastHitColor = QColor(255, 255, 0);
         hpDelta = 0;
+        score += 100;
+        updateScoreStatusLabel();
     }
     else {
         lastHitText = "ПРОМАХ";
@@ -360,7 +400,7 @@ void MainWindow::registerHit(qint64 diff)
     if (hp <= 0) {
         gameState = GameState::Idle;
         player->stop();
-        ui->statusGameLabel->setText("Вы проиграли");
+        ui->statusGameLabel->setText(QString("Вы проиграли. Очки: %1").arg(score));
         update();
     }
 }
@@ -420,6 +460,94 @@ void MainWindow::updateHpLabel()
     ui->hpLabel->setStyleSheet(
         QString("color: %1; font-weight: bold;").arg(color.name())
         );
+}
+
+void MainWindow::updateScoreStatusLabel()
+{
+    if (!scoreStatusLabel)
+        return;
+
+    scoreStatusLabel->setText(QString("Очки: %1").arg(score));
+}
+
+void MainWindow::showLeaderboard()
+{
+    if (currentMap.id.isEmpty()) {
+        QMessageBox::information(this, "Лидеры", "Сначала загрузите карту.");
+        return;
+    }
+
+    ui->statusGameLabel->setText("Загрузка таблицы лидеров...");
+    leaderboardClient->fetch(currentMap.id);
+}
+
+void MainWindow::submitScore()
+{
+    if (scoreDialogShown || currentMap.id.isEmpty() || hp <= 0)
+        return;
+
+    scoreDialogShown = true;
+
+    bool ok = false;
+    const QString nickname = QInputDialog::getText(
+        this,
+        "Сохранить результат",
+        QString("Ваш результат: %1 очков\nВведите никнейм:").arg(score),
+        QLineEdit::Normal,
+        QString(),
+        &ok
+        ).trimmed();
+
+    if (!ok || nickname.isEmpty())
+        return;
+
+    leaderboardClient->submit(currentMap.id, nickname, score);
+}
+
+void MainWindow::showLeaderboardEntries(const QList<LeaderboardEntry> &entries)
+{
+    QDialog dialog(this);
+    dialog.setWindowTitle("Лидеры: " + currentMap.title);
+    dialog.resize(420, 360);
+
+    QVBoxLayout *layout = new QVBoxLayout(&dialog);
+    QTableWidget *table = new QTableWidget(entries.size(), 3, &dialog);
+    table->setHorizontalHeaderLabels({"Место", "Никнейм", "Очки"});
+    table->verticalHeader()->setVisible(false);
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    table->setSelectionBehavior(QAbstractItemView::SelectRows);
+    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    for (int row = 0; row < entries.size(); ++row) {
+        table->setItem(row, 0, new QTableWidgetItem(QString::number(row + 1)));
+        table->setItem(row, 1, new QTableWidgetItem(entries[row].nickname));
+        table->setItem(row, 2, new QTableWidgetItem(QString::number(entries[row].score)));
+    }
+
+    layout->addWidget(table);
+
+    QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok, &dialog);
+    connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    layout->addWidget(buttons);
+
+    ui->statusGameLabel->setText("Таблица лидеров загружена");
+    dialog.exec();
+}
+
+void MainWindow::onLeaderboardSubmitFinished(bool saved, const QString &message)
+{
+    if (saved) {
+        QMessageBox::information(this, "Лидеры", message);
+        showLeaderboard();
+    } else {
+        QMessageBox::warning(this, "Лидеры", message);
+    }
+}
+
+void MainWindow::onLeaderboardRequestFailed(const QString &message)
+{
+    ui->statusGameLabel->setText("Ошибка таблицы лидеров");
+    QMessageBox::warning(this, "Лидеры", message);
 }
 
 void MainWindow::showSettingsDialog()

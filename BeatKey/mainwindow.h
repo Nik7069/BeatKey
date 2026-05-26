@@ -9,8 +9,10 @@
 #include <QKeyEvent>
 #include <QSoundEffect>
 #include <QPropertyAnimation>
+#include <QLabel>
 
 // Добавляем новый заголовок
+#include "leaderboardclient.h"
 #include "settingsdialog.h"
 #include "gameconfig.h"
 
@@ -55,6 +57,8 @@ private:
     };
 
     struct BeatMap {
+        QString id;
+        QString title;
         QString musicPath;
         QVector<Note> notes;
     };
@@ -86,6 +90,10 @@ private:
     QPropertyAnimation *scoreAnim = nullptr;
     QPoint scoreLabelBasePos;
     int hp = 50;
+    int score = 0;
+    bool scoreDialogShown = false;
+    QLabel *scoreStatusLabel = nullptr;
+    LeaderboardClient *leaderboardClient = nullptr;
 
     // Добавляем клавиши
     int primaryKey = Qt::Key_Space;
@@ -99,6 +107,12 @@ private slots:
     void animateScoreLabel();
     void resizeEvent(QResizeEvent *event) override;
     void updateHpLabel();
+    void updateScoreStatusLabel();
+    void showLeaderboard();
+    void submitScore();
+    void showLeaderboardEntries(const QList<LeaderboardEntry> &entries);
+    void onLeaderboardSubmitFinished(bool saved, const QString &message);
+    void onLeaderboardRequestFailed(const QString &message);
 
     // Добавляем новый слот для настроек
     void showSettingsDialog();

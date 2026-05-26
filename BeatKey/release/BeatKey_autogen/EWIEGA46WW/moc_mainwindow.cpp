@@ -7,7 +7,10 @@
 *****************************************************************************/
 
 #include "../../../mainwindow.h"
+#include <QtGui/qtextcursor.h>
+#include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
+#include <QtCore/QList>
 
 #include <QtCore/qtmochelpers.h>
 
@@ -50,6 +53,16 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "QResizeEvent*",
         "event",
         "updateHpLabel",
+        "updateScoreStatusLabel",
+        "showLeaderboard",
+        "submitScore",
+        "showLeaderboardEntries",
+        "QList<LeaderboardEntry>",
+        "entries",
+        "onLeaderboardSubmitFinished",
+        "saved",
+        "message",
+        "onLeaderboardRequestFailed",
         "showSettingsDialog",
         "applySettings"
     };
@@ -73,10 +86,28 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         }}),
         // Slot 'updateHpLabel'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'showSettingsDialog'
+        // Slot 'updateScoreStatusLabel'
         QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'applySettings'
+        // Slot 'showLeaderboard'
         QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'submitScore'
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showLeaderboardEntries'
+        QtMocHelpers::SlotData<void(const QList<LeaderboardEntry> &)>(15, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 16, 17 },
+        }}),
+        // Slot 'onLeaderboardSubmitFinished'
+        QtMocHelpers::SlotData<void(bool, const QString &)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Bool, 19 }, { QMetaType::QString, 20 },
+        }}),
+        // Slot 'onLeaderboardRequestFailed'
+        QtMocHelpers::SlotData<void(const QString &)>(21, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 20 },
+        }}),
+        // Slot 'showSettingsDialog'
+        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'applySettings'
+        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -107,8 +138,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->animateScoreLabel(); break;
         case 5: _t->resizeEvent((*reinterpret_cast<std::add_pointer_t<QResizeEvent*>>(_a[1]))); break;
         case 6: _t->updateHpLabel(); break;
-        case 7: _t->showSettingsDialog(); break;
-        case 8: _t->applySettings(); break;
+        case 7: _t->updateScoreStatusLabel(); break;
+        case 8: _t->showLeaderboard(); break;
+        case 9: _t->submitScore(); break;
+        case 10: _t->showLeaderboardEntries((*reinterpret_cast<std::add_pointer_t<QList<LeaderboardEntry>>>(_a[1]))); break;
+        case 11: _t->onLeaderboardSubmitFinished((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
+        case 12: _t->onLeaderboardRequestFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 13: _t->showSettingsDialog(); break;
+        case 14: _t->applySettings(); break;
         default: ;
         }
     }
@@ -133,14 +170,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 15;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 15)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 15;
     }
     return _id;
 }
